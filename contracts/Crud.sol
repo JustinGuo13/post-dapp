@@ -4,9 +4,7 @@ pragma solidity ^0.8.4;
 import "hardhat/console.sol";
 
 contract Crud{
-	/*
-	A CRUD (Create, Read, Update, Delete) dApp where users can create posts, read posts, update existing posts and remove posts. You should track the ownership of posts such that only owners can update and remove posts.
-	*/
+	
 
 	struct Post{
 		uint id;
