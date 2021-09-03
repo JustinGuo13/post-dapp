@@ -16,16 +16,29 @@ function App() {
 	}
 
 	// call the smart contract, create a post
-	async function createPost() {}
+	async function createPost() {
+		if (typeof window.ethereum !== 'undefined') {
+			const provider = new ethers.providers.Web3Provider(window.ethereum);
+		}
+	}
 
 	// call the smart contract, read post title and content
-	async function readPost() {}
+	async function readPost() {
+		if (typeof window.ethereum !== 'undefined') {
+		}
+	}
 
 	// call the smart contract, edit post title and content
-	async function editPost() {}
+	async function editPost() {
+		if (typeof window.ethereum !== 'undefined') {
+		}
+	}
 
 	// call the smart contract, delete post
-	async function deletePost() {}
+	async function deletePost() {
+		if (typeof window.ethereum !== 'undefined') {
+		}
+	}
 
 	return (
 		<div className="App">
