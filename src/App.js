@@ -8,7 +8,8 @@ const crudAddress = 'your-contract-address';
 
 function App() {
 	// store crud in local state
-	const [crud, setCrudValue] = useState();
+	const [title, setTitle] = useState();
+	const [content, setContent] = useState();
 
 	// request access to the user's MetaMask account
 	async function requestAccount() {
@@ -18,7 +19,13 @@ function App() {
 	// call the smart contract, create a post
 	async function createPost() {
 		if (typeof window.ethereum !== 'undefined') {
+			await requestAccount();
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
+			console.log({ provider });
+			const signer = provider.getSigner();
+			const contract = new ethers.Contract(crudAddress, Crud.abi, signer);
+			const transaction = await contract.createPost(title, content);
+			await transaction.wait();
 		}
 	}
 
@@ -43,18 +50,10 @@ function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
+				<h1>Create Post</h1>
+				<input onChange={(e) => setTitle(e.target.value)} placeholder="Set Title" />
+				<input onChange={(e) => setContent(e.target.value)} placeholder="Set Content" />
+				<button onClick={createPost}>Create Post</button>
 			</header>
 		</div>
 	);
