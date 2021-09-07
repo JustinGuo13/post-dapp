@@ -54,6 +54,8 @@ function App() {
 				<input onChange={(e) => setTitle(e.target.value)} placeholder="Set Title" />
 				<input onChange={(e) => setContent(e.target.value)} placeholder="Set Content" />
 				<button onClick={createPost}>Create Post</button>
+
+				<h1>Read Post</h1>
 			</header>
 		</div>
 	);
