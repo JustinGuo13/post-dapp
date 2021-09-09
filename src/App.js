@@ -33,6 +33,7 @@ function App() {
 
 	// call the smart contract, read post title and content
 	async function readPost() {
+		//fix
 		if (typeof window.ethereum !== 'undefined') {
 			await requestAccount();
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
