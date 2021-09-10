@@ -33,7 +33,7 @@ function App() {
 
 	// call the smart contract, read post title and content
 	async function readPost() {
-		//fix
+		if (!id) return;
 		if (typeof window.ethereum !== 'undefined') {
 			await requestAccount();
 			const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -96,7 +96,7 @@ function App() {
 				<h1>Delete Post</h1>
 				<input
 					onChange={(e) => setId(e.target.value)}
-					placeholder="Choose Post ID to delete"
+					placeholder="Choose Post ID"
 				/>
 				<button onClick={deletePost}>Delete Post</button>
 			</header>
